@@ -1,50 +1,62 @@
-// Diese Funktion wird automatisch aufgerufen, sobald die Google Maps API geladen ist.
+// This function will run when the Google Maps API is ready.
 function initMap() {
-    // 1. Definiere die Städte unserer Reise mit Koordinaten und Titeln
-    const frankfurt = { lat: 50.1109, lng: 8.6821 };
-    const wuerzburg = { lat: 49.7913, lng: 9.9534 };
-    const nuernberg = { lat: 49.4521, lng: 11.0767 };
-    const muenchen = { lat: 48.1351, lng: 11.5820 };
 
-    const locations = [
-        { pos: frankfurt, title: 'Start: Frankfurt' },
-        { pos: wuerzburg, title: 'Station 1: Würzburg' },
-        { pos: nuernberg, title: 'Station 2: Nürnberg' },
-        { pos: muenchen, title: 'Ziel: München' }
-    ];
+    // 1. Define the locations for our trip.
+    const frankfurt = { lat: 50.1109, lng: 8.6821, info: "Start: Frankfurt am Main" };
+    const wuerzburg = { lat: 49.7913, lng: 9.9534, info: "Station 1: Würzburg" };
+    const nuernberg = { lat: 49.4521, lng: 11.0767, info: "Station 2: Nürnberg" };
+    const muenchen = { lat: 48.1351, lng: 11.5820, info: "Ziel: München" };
 
-    // 2. Erstelle die Karte und zentriere sie auf Deutschland
+    const locations = [frankfurt, wuerzburg, nuernberg, muenchen];
+
+    // 2. Create the map, centered on Southern Germany.
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 7,
-        center: { lat: 49.5, lng: 10.0 }, // Zentriert auf Süddeutschland
+        center: { lat: 49.5, lng: 10.0 },
         mapTypeId: 'roadmap'
     });
 
-    // 3. Erstelle für jede Stadt einen Marker auf der Karte
+    // 3. Create markers AND info windows.
+    const infoWindow = new google.maps.InfoWindow();
+
     locations.forEach(location => {
-        new google.maps.Marker({
-            position: location.pos,
+        const marker = new google.maps.Marker({
+            position: location,
             map: map,
-            title: location.title
+            title: location.info
+        });
+
+        // NEW: Add a click listener to each marker.
+        marker.addListener('click', () => {
+            infoWindow.close();
+            infoWindow.setContent(marker.getTitle());
+            infoWindow.open(marker.getMap(), marker);
         });
     });
 
-    // 4. Definiere die Reiseroute als eine Linie, die die Städte verbindet
-    const flightPlanCoordinates = [
-        frankfurt,
-        wuerzburg,
-        nuernberg,
-        muenchen
-    ];
-
-    const flightPath = new google.maps.Polyline({
-        path: flightPlanCoordinates,
+    // 4. Draw the travel route on the map.
+    const travelPath = new google.maps.Polyline({
+        path: locations,
         geodesic: true,
-        strokeColor: '#FF0000', // Rote Farbe für die Linie
+        strokeColor: '#FF0000',
         strokeOpacity: 1.0,
         strokeWeight: 2
     });
+    travelPath.setMap(map);
 
-    // Zeichne die Linie auf der Karte
-    flightPath.setMap(map);
+    // 5. NEW: Add click listeners to the text links.
+    document.getElementById('wuerzburg-link').addEventListener('click', () => {
+        map.panTo(wuerzburg);
+        map.setZoom(12);
+    });
+
+    document.getElementById('nuernberg-link').addEventListener('click', () => {
+        map.panTo(nuernberg);
+        map.setZoom(12);
+    });
+
+    document.getElementById('muenchen-link').addEventListener('click', () => {
+        map.panTo(muenchen);
+        map.setZoom(12);
+    });
 }
