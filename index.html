@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt: Interaktive Bahnreise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🚂 Interaktive Bahnreise durch Süddeutschland</h1>
+    </header>
+
+    <div class="container">
+        <div class="reiseplan">
+            <h2>📝 Detaillierter Reiseplan</h2>
+
+            <h3>Tag 1 & 2: Würzburg – Barock, Wein und Festung</h3>
+            <p><strong>Anreise:</strong> Direkter ICE von Frankfurt Hbf (ca. 1h 10m).</p>
+            <ul>
+                <li><strong>Würzburger Residenz:</strong> Meisterwerk des Barock und UNESCO-Welterbe.</li>
+                <li><strong>Alte Mainbrücke:</strong> "Brückenschoppen" mit Blick auf die Festung.</li>
+                <li><strong>Festung Marienberg:</strong> Panoramablick über die Stadt.</li>
+            </ul>
+
+            <h3>Tag 2, 3 & 4: Nürnberg – Mittelalter und Geschichte</h3>
+            <p><strong>Anreise:</strong> Direkter ICE von Würzburg (ca. 55 Min.).</p>
+            <ul>
+                <li><strong>Kaiserburg:</strong> Das Wahrzeichen der Stadt.</li>
+                <li><strong>Dokumentationszentrum:</strong> Wichtiger Ort der deutschen Geschichte.</li>
+                <li><strong>Kulinarik:</strong> Probieren Sie die berühmten "3 im Weggla".</li>
+            </ul>
+
+            <h3>Tag 4, 5 & 6: München – Weltstadt mit Herz</h3>
+            <p><strong>Anreise:</strong> Direkter ICE von Nürnberg (ca. 1h 5m).</p>
+            <ul>
+                <li><strong>Marienplatz:</strong> Das Herz der Stadt mit dem berühmten Glockenspiel.</li>
+                <li><strong>Englischer Garten:</strong> Entspannen an der Eisbachwelle.</li>
+                <li><strong>Deutsches Museum:</strong> Größtes Wissenschafts- und Technikmuseum der Welt.</li>
+            </ul>
+        </div>
+        <div id="map"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=DEIN_Maps_API_KEY&callback=initMap" async defer></script>
+    
+</body>
+</html>
