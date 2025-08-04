@@ -51,13 +51,9 @@ function initMap() {
     });
 
     const trainSymbol = {
-        path: 'M21,16.5C21,17.9 19.9,19 18.5,19C17.1,19 16,17.9 16,16.5C16,15.1 17.1,14 18.5,14C19.9,14 21,15.1 21,16.5M9,16.5C9,17.9 7.9,19 6.5,19C5.1,19 4,17.9 4,16.5C4,15.1 5.1,14 6.5,14C7.9,14 9,15.1 9,16.5M20,8H17.8C17.4,6.2 15.9,5 14,5H10C8.1,5 6.6,6.2 6.2,8H4C2.9,8 2,8.9 2,10V16.5C2,17.3 2.4,18 3,18.5V20C3,20.6 3.4,21 4,21H5C5.6,21 6,20.6 6,20V19H18V20C18,20.6 18.4,21 19,21H20C20.6,21 21,20.6 21,20V18.5C21.6,18 22,17.3 22,16.5V10C22,8.9 21.1,8 20,8Z',
-        scale: 1.5,
-        strokeColor: 'white',
-        strokeWeight: 2,
-        fillColor: '#4488FF',
-        fillOpacity: 1,
-        anchor: new google.maps.Point(12, 12)
+        url: 'train-icon.png', // Der Dateiname Ihres neuen Bildes
+        scaledSize: new google.maps.Size(50, 50), // Die Größe des Symbols (Breite, Höhe)
+        anchor: new google.maps.Point(25, 25) // Der Mittelpunkt des Symbols
     };
 
     const trainMarker = new google.maps.Marker({
